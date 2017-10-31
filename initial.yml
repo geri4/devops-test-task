@@ -1,0 +1,10 @@
+- hosts: all
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: update apt cache
+      raw: apt-get -y update
+    - name: install python
+      raw: apt-get install -y python
+    - name: install sudo
+      raw: apt-get install -y sudo

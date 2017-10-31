@@ -1,0 +1,15 @@
+- name: create dir for django files
+  file: path=/opt/data/django state=directory
+- name: copy config file
+  template: src=settings.py dest=/opt/data/django/settings.py
+- name: create postgres container
+  docker_container:
+    name: django
+    image: geri4/django-sample-app
+    restart_policy: always
+    volumes:
+      - /opt/data/django/settings.py:/django-sample-app/projectname/settings.py
+    ports:
+      - 80:8000
+    networks:
+      - name: "{{ network_name }}"

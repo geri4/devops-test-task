@@ -1,0 +1,2 @@
+- name: create network
+  docker_network: name=django

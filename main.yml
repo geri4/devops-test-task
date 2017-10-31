@@ -1,0 +1,7 @@
+- hosts: all
+  become: yes
+  roles:
+    - { role: docker, tags: ['docker'] }
+    - { role: docker-network, tags: ['docker-nework'] }
+    - { role: postgres, tags: ['postgres'] }
+    - { role: django, tags: ['django'] }
